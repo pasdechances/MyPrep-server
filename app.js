@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost:27017/myNewDb',
 
 const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
-app.use(body.urlencoded());
+app.use(body.json());
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 
