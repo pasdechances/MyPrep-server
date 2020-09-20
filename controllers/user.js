@@ -1,4 +1,5 @@
 const User = require('../models/user');
+//const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
 exports.createUser = (req, res, next) => {
@@ -11,7 +12,8 @@ exports.createUser = (req, res, next) => {
   user.save().then(
     () => {
       res.status(201).json({
-        message: 'Post saved successfully!'
+        message: 'Post saved successfully!',
+        id : user._id
       });
     }
   ).catch(
