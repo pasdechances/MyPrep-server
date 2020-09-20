@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 exports.createUser = (req, res, next) => {
 
-  console.log(req)
+  console.log("create user request")
 
   const user = new User({
     firstname: req.body.firstname,
@@ -84,6 +84,7 @@ exports.deleteUser = (req, res, next) => {
 };
 
 exports.getAllUsers = (req, res, next) => {
+  console.log("get all user request")
   User.find().then(
     (users) => {
       res.status(200).json(users);
