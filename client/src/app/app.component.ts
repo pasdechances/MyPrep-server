@@ -8,7 +8,7 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent {
 
-  loaderStatus : String
+  loaderStatus = false
 
   constructor(private userService: UserService) {}
 
@@ -17,15 +17,13 @@ export class AppComponent {
   }
 
   getUser(){
+    this.loaderStatus = true;
     console.log('test')
     this.userService.getUsers().subscribe((responseBody) => {
       console.log(responseBody);
+      this.loaderStatus = false;
     });
   }
 
-  toggleLoader(){
-    if(this.loaderStatus == "indeterminate")this.loaderStatus ="determinate";
-    else this.loaderStatus = "indeterminate"
-  }
   
 }

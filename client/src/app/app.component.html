@@ -1,5 +1,5 @@
 <div>
     <app-navbar></app-navbar>
-    <mat-progress-bar mode="{{ loaderStatus }}"></mat-progress-bar>
+    <mat-progress-bar *ngIf=loaderStatus mode="indeterminate"></mat-progress-bar>
     <app-form-user (loader)="getUser()"></app-form-user>
 </div>
