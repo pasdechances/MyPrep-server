@@ -1,5 +1,5 @@
 <div>
-
-<mat-spinner></mat-spinner>
-
+    <app-navbar></app-navbar>
+    <mat-progress-bar mode="{{ loaderStatus }}"></mat-progress-bar>
+    <app-form-user (loader)="getUser()"></app-form-user>
 </div>

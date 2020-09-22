@@ -8,6 +8,8 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent {
 
+  loaderStatus : String
+
   constructor(private userService: UserService) {}
 
   ngOnInit() {
@@ -15,10 +17,15 @@ export class AppComponent {
   }
 
   getUser(){
+    console.log('test')
     this.userService.getUsers().subscribe((responseBody) => {
       console.log(responseBody);
     });
   }
-  
+
+  toggleLoader(){
+    if(this.loaderStatus == "indeterminate")this.loaderStatus ="determinate";
+    else this.loaderStatus = "indeterminate"
+  }
   
 }

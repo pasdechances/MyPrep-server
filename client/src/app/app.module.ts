@@ -5,11 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormUserComponent } from './form-user/form-user.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    FormUserComponent,
+    NavbarComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

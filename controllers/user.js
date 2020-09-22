@@ -85,6 +85,7 @@ exports.deleteUser = (req, res, next) => {
 
 exports.getAllUsers = (req, res, next) => {
   console.log("get all user request")
+  sleep(4)
   User.find().then(
     (users) => {
       res.status(200).json(users);
@@ -97,6 +98,12 @@ exports.getAllUsers = (req, res, next) => {
     }
   );
 };
+
+function sleep(seconds)
+{
+  var waitTill = new Date(new Date().getTime() + seconds * 1000);
+  while(waitTill > new Date()){}
+}
 
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
