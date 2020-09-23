@@ -7,13 +7,15 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormUserComponent } from './form-user/form-user.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { ListeUserComponent } from './liste-user/liste-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormUserComponent,
     NavbarComponent,
+    ListeUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormsModule,
     MaterialModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

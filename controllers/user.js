@@ -85,7 +85,7 @@ exports.deleteUser = (req, res, next) => {
 
 exports.getAllUsers = (req, res, next) => {
   console.log("get all user request")
-  sleep(4)
+  sleep(1)
   User.find().then(
     (users) => {
       res.status(200).json(users);
