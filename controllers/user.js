@@ -15,26 +15,12 @@ exports.createUser = (req, res, next) => {
     
         User.findOne({
           login: req.body.login
-        }).then(
-          (user) => {
-            
-            if(user == null) {
-              console.log('login is null');
-              var loginOk = false;
-            } else {
-              return res.status(403).json({
-              error: 'login already exist !'
-              });
-              var loginOk = false;
-            }
-          }
-        ).catch(
-          (error) => {
-            res.status(404).json({
-              error: error
-            });
-          }
-        );
+        })
+        if(User){
+          return res.status(403).json({
+                error: 'login already exist !'
+                });
+        }
   }
 
   if(req.body.firstname === undefined || req.body.firstname === ''){
@@ -64,6 +50,8 @@ exports.createUser = (req, res, next) => {
     login: req.body.login,
     password: req.body.password,
   });
+
+  console.log('totot')
 
   if (loginOk === true ){
     user.save().then(
