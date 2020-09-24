@@ -3,7 +3,6 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 var cors = require('cors')
-const urlencodedParser = bodyParser.urlencoded({ extended: true })
 mongoose.connect('mongodb://localhost:27017/myNewDb',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
@@ -21,7 +20,7 @@ app.use(cors(corsOptions))
 const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
 
-app.use(urlencodedParser);
+app.use(bodyParser.json());
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 
