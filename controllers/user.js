@@ -2,30 +2,92 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 
 exports.createUser = (req, res, next) => {
+
+  console.log(req.body)
+  var loginOk = true;
+  if(req.body.login === undefined || req.body.login === ''){
+    console.log('login vide');
+    return res.status(403).json({
+      error: 'login is empty :('
+    });
+  } else {
+    
+        User.findOne({
+          login: req.body.login
+        }).then(
+          (user) => {
+            
+            if(user == null) {
+              console.log('login is null');
+              var loginOk = false;
+            } else {
+              return res.status(403).json({
+              error: 'login already exist !'
+              });
+              var loginOk = false;
+            }
+          }
+        ).catch(
+          (error) => {
+            res.status(404).json({
+              error: error
+            });
+          }
+        );
+  }
+
+  if(req.body.firstname === undefined || req.body.firstname === ''){
+    console.log('firstname vide');
+    return res.status(403).json({
+      error: 'firstname is empty :('
+    });
+  }
+
+  if(req.body.lastname === undefined || req.body.lastname === ''){
+    console.log('lastname vide');
+    return res.status(403).json({
+      error: 'lastname is empty :('
+    });
+  }
+
+  if(req.body.password === undefined || req.body.password === ''){
+    console.log('password vide');
+    return res.status(404).json({
+      error: 'password is empty :('
+    });
+  }
+
   const user = new User({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     login: req.body.login,
     password: req.body.password,
   });
-  user.save().then(
-    () => {
-      res.status(201).json({
-        message: 'Post saved successfully!'
-      });
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
+
+  if (loginOk === true ){
+    user.save().then(
+      () => {
+        res.status(201).json({
+          message: 'Post saved successfully!'
+        });
+      }
+    ).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
+  }
+
+
+
+
 };
 
 exports.getOneUser = (req, res, next) => {
   User.findOne({
-    _id: req.params.id
+    login: req.params.id
   }).then(
     (user) => {
       res.status(200).json(user);
