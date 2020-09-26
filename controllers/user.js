@@ -5,44 +5,6 @@ const jwt = require('jsonwebtoken');
 exports.createUser = (req, res, next) => {
 
   console.log(req.body)
-  var loginOk = true;
-  if(req.body.login === undefined || req.body.login === ''){
-    console.log('login vide');
-    return res.status(403).json({
-      error: 'login is empty :('
-    });
-  } else {
-    
-        User.findOne({
-          login: req.body.login
-        })
-        if(User){
-          return res.status(403).json({
-                error: 'login already exist !'
-                });
-        }
-  }
-
-  if(req.body.firstname === undefined || req.body.firstname === ''){
-    console.log('firstname vide');
-    return res.status(403).json({
-      error: 'firstname is empty :('
-    });
-  }
-
-  if(req.body.lastname === undefined || req.body.lastname === ''){
-    console.log('lastname vide');
-    return res.status(403).json({
-      error: 'lastname is empty :('
-    });
-  }
-
-  if(req.body.password === undefined || req.body.password === ''){
-    console.log('password vide');
-    return res.status(404).json({
-      error: 'password is empty :('
-    });
-  }
 
   const user = new User({
     firstname: req.body.firstname,
@@ -51,27 +13,56 @@ exports.createUser = (req, res, next) => {
     password: req.body.password,
   });
 
-  console.log('totot')
-
-  if (loginOk === true ){
-    user.save().then(
-      () => {
-        res.status(201).json({
-          message: 'Post saved successfully!'
-        });
-      }
-    ).catch(
-      (error) => {
-        res.status(400).json({
-          error: error
-        });
-      }
-    );
+  if(user.firstname === undefined || user.firstname === ''){
+    console.log('firstname vide');
+    return res.status(403).json({
+      error: 'firstname is empty :('
+    });
   }
 
+  if(user.lastname === undefined || user.lastname === ''){
+    console.log('lastname vide');
+    return res.status(403).json({
+      error: 'lastname is empty :('
+    });
+  }
 
+  if(user.password === undefined || user.password === ''){
+    console.log('password vide');
+    return res.status(404).json({
+      error: 'password is empty :('
+    });
+  }
 
-
+  if(user.login === undefined || user.login === ''){
+    console.log('login vide');
+    return res.status(403).json({
+      error: 'login is empty :('
+    });
+  } else {
+    User.findOne({login: user.login}, function(err , users){
+      console.log(users)
+      if(!users){
+        user.save().then(
+          () => {
+            res.status(201).json({
+              message: 'Post saved successfully!'
+            });
+          }
+        ).catch(
+          (error) => {
+            res.status(400).json({
+              error: error
+            });
+          }
+        );
+      }else{
+        res.status(201).json({
+          message: 'login already exist!'
+        });
+      }         
+    });
+  }
 };
 
 exports.getOneUser = (req, res, next) => {
