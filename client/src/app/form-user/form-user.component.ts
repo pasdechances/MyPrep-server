@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../services/user.service';
-import {FormControl, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-form-user',
@@ -9,11 +10,13 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class FormUserComponent implements OnInit {
 
+  
   @Output() eventUser = new EventEmitter<string>()
   hide = true;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -26,19 +29,23 @@ export class FormUserComponent implements OnInit {
     user.lastname = event.target.lastname.value
     user.login = event.target.login.value
     user.password = event.target.password.value
-
+    
     this.newUser(user)
     return 
   }
 
   newUser(user : object){
-    this.userService.createUser(user).subscribe((value) => {
-        console.log(value);
-    }, (error) => {
-        console.log(error);
-    }, () => {
+    this.userService.createUser(user).subscribe((value : value) => {
+        this.openSB(value.message)
         this.eventUser.emit()
+    }, (error) => {
+        this.openSB("une erreur est survenue")
+        console.log(error)
     });
+  }
+
+  openSB(message){
+    this.snackBar.open(message)
   }
 
 }
@@ -48,4 +55,8 @@ export class Users {
   lastname: String;
   login: String;
   password: String;
+}
+
+export class value {
+  message: String;
 }
