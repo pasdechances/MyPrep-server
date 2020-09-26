@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-liste-user',
@@ -8,6 +10,8 @@ import { UserService } from '../services/user.service';
 })
 export class ListeUserComponent implements OnInit {
 
+  @Input() eventsUser: Observable<void>;
+  
   loaderStatus = false
   displayedColumns: string[] = ['lastname', 'firstname', 'login', 'password'];
   dataSource: any
@@ -18,6 +22,7 @@ export class ListeUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser()
+    this.eventsUser.subscribe(() => this.getUser());
   }
 
   getUser(){

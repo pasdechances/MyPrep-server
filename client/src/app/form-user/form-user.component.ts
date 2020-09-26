@@ -9,7 +9,7 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class FormUserComponent implements OnInit {
 
-  @Output() loader = new EventEmitter<string>()
+  @Output() eventUser = new EventEmitter<string>()
   hide = true;
 
   constructor(
@@ -27,7 +27,8 @@ export class FormUserComponent implements OnInit {
     user.login = event.target.login.value
     user.password = event.target.password.value
 
-    return this.newUser(user)
+    this.newUser(user)
+    return 
   }
 
   newUser(user : object){
@@ -36,12 +37,8 @@ export class FormUserComponent implements OnInit {
     }, (error) => {
         console.log(error);
     }, () => {
-        console.log('Fini !');
+        this.eventUser.emit()
     });
-  }
-
-  changeOutput(){
-    this.loader.emit()
   }
 
 }

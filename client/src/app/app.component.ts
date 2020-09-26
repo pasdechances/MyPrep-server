@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  loaderStatus = false;
+  eventsUser: Subject<void> = new Subject<void>();
 
   constructor() {}
 
   ngOnInit() {}
-  
+
+  pass(){
+    this.eventsUser.next();
+  }
 }
