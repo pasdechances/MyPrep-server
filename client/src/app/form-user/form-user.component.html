@@ -1,43 +1,43 @@
 <mat-card>
-    
-    <table>
-        <tr>
-            <td><mat-form-field appearance="fill">
-                <mat-label>nom</mat-label>
-                <input matInput>
-            </mat-form-field></td>
-        </tr> 
-        <tr>
-            <td><mat-form-field appearance="fill">
-                <mat-label>prenom</mat-label>
-                <input matInput>
-            </mat-form-field></td>
-        </tr>
-        <tr><td>
-            <mat-form-field appearance="fill">
-                <mat-label>login</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </td></tr>
-        <tr><td>
-            <mat-form-field appearance="fill">
-                <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            </mat-form-field>
-        </td></tr>
+    <form (ngSubmit)="onSubmit($event)">
+        <table>   
+            <tr>
+                <td><mat-form-field appearance="fill">
+                    <mat-label>nom</mat-label>
+                    <input matInput name="firstname">
+                </mat-form-field></td>
+            </tr> 
+            <tr>
+                <td><mat-form-field appearance="fill">
+                    <mat-label>prenom</mat-label>
+                    <input matInput name="lastname">
+                </mat-form-field></td>
+            </tr>
+            <tr><td>
+                <mat-form-field appearance="fill">
+                    <mat-label>login</mat-label>
+                    <input matInput name="login">
+                </mat-form-field>
+            </td></tr>
+            <tr><td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" name="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </td></tr>
 
-        <tr><td>
-            <mat-form-field appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </td></tr>
-        <tr><td>
-            <button mat-raised-button (click)="changeOutput()">Basic</button>
-        </td></tr>
-    </table>
-   
+            <tr><td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </td></tr>
+            <tr><td>
+                <button mat-raised-button type="submit">Basic</button>
+            </td></tr>
+        </table>
+    </form>
 </mat-card>
