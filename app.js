@@ -26,10 +26,11 @@ app.use(cors(corsOptions))
 
 const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
+const installRoutes = require('./routes/install');
 
 app.use(bodyParser.json());
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
-
+app.use('/api/install', installRoutes);
 
 module.exports = app;
