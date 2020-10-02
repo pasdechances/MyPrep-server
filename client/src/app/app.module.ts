@@ -10,6 +10,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ListeUserComponent } from './liste-user/liste-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
   ],
+  exports:[],
   providers: [],
   bootstrap: [AppComponent]
 })

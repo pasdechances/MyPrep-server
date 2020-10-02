@@ -12,7 +12,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-    url = 'http://localhost:3000/api/user/';
+    url = '/api/user/';
   
     getUsers() {
       return this.http.get(this.url);
