@@ -8,6 +8,10 @@ mongoose.connect('mongodb://localhost:27017/myNewDb',
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
+app.use(express.static(process.cwd()+"/client/dist/client/"));
+app.get('/', (req,res) => {
+  res.sendFile(process.cwd()+"/client/dist/client/index.html")
+});
 
 var corsOptions = {
     origin: 'http://localhost:4200',
