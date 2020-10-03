@@ -45,7 +45,7 @@ exports.newUser = (req, res, next) => {
     User.findOne({login: user.login}, function(err , users){
       console.log(users)
       if(!users){
-        createUser.then(
+        createUser(user).then(
           () => {
             res.status(201).json({
               message: 'Post saved successfully!'
@@ -67,12 +67,13 @@ exports.newUser = (req, res, next) => {
   }
 };
 
-exports.createUser = (param) => {
+createUser = (param) => {
   user = new User(param)
   user.password = bcrypt.hashSync(user.password, global.saltRounds)
 
   return user.save()
 }
+exports.createUser = createUser
 
 exports.getOneUser = (req, res, next) => {
   User.findOne({

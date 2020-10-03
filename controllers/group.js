@@ -23,7 +23,7 @@ exports.newGroup = (req, res, next) => {
     Group.findOne({login: group.login}, function(err , groups){
       console.log(groups)
       if(!groups){
-        createGroup.then(
+        createGroup(group).then(
           () => {
             res.status(201).json({
               message: 'Post saved successfully!'
@@ -45,10 +45,11 @@ exports.newGroup = (req, res, next) => {
   
 };
 
-exports.createGroup = (param) => {
+createGroup = (param) => {
   group = new Group(param)
   return group.save()
 }
+exports.createGroup = createGroup
 
 exports.getOneGroup = (req, res, next) => {
   Group.findOne({
