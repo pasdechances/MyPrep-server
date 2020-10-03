@@ -1,5 +1,6 @@
 const User = require('../models/user');
 //const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 exports.newUser = (req, res, next) => {
@@ -10,7 +11,7 @@ exports.newUser = (req, res, next) => {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     login: req.body.login,
-    password: bcrypt.hashSync(req.body.password, global.saltRounds),
+    password: req.body.password,
     groups: req.body.groups,
   });
 
@@ -66,7 +67,10 @@ exports.newUser = (req, res, next) => {
   }
 };
 
-exports.createUser = (user) => {
+exports.createUser = (param) => {
+  user = new User(param)
+  user.password = bcrypt.hashSync(user.password, global.saltRounds)
+
   return user.save()
 }
 
