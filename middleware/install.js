@@ -1,8 +1,5 @@
-const fs = require('fs')
-
 module.exports = (req, res, next) => {
-    fichier = fs.readFileSync('./config.json')
-    let config = JSON.parse(fichier)
+    let config = JSON.parse(require('fs').readFileSync('./config.json'))
 
     if (config.installed) {
         next();

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const userCtrl = require('../controllers/user');
+const installCtrl = require('../controllers/install');
 
-router.post('/configServeur', userCtrl.login);
+router.post('/', installCtrl.login);
 
 module.exports = router;
