@@ -3,7 +3,7 @@ const filePath = './config.json';
 const base = require('../resources/connect.js')
 
 const userCtrl = require('../controllers/user');
-const groupCtrl = require('../controllers/user');
+const groupCtrl = require('../controllers/group');
 
 
 exports.login = (req, res, next) => {
@@ -24,7 +24,9 @@ exports.login = (req, res, next) => {
     if(!req.body.user.name)return res.status(500).json({ field: 'name', error: 'field is empty' });
     if(!req.body.user.password)return res.status(500).json({ field: 'user', error: 'field is empty' });
 
-    groupCtrl.createGroupe({
+
+
+    groupCtrl.createGroup({
         name: "Administrateur",
         rights: {
             userEditable: true,
@@ -36,9 +38,11 @@ exports.login = (req, res, next) => {
             teletransmissionUsable: true,
             vaccinationAllow: true,
         } 
-    });
+    })
+    .then(() => {console.log("Group created")})
+    .catch((error) => {console.log(error)});
 
-    groupCtrl.createGroupe({
+    groupCtrl.createGroup({
         name: "Utilisateur",
         rights: {
             userEditable: false,
@@ -50,7 +54,9 @@ exports.login = (req, res, next) => {
             teletransmissionUsable: false,
             vaccinationAllow: false,
         } 
-    });
+    })
+    .then(() => {console.log("Group created")})
+    .catch((error) => {console.log(error)});
 
     userCtrl.createUser({
         firstname: "admin",
@@ -59,7 +65,7 @@ exports.login = (req, res, next) => {
         password: req.body.user.password,
         groups:["Administrateur"]
     })
-    .then(() => {console.log("User '" + user.login + "' created")})
+    .then(() => {console.log("User created")})
     .catch((error) => {console.log(error)})
     
     config.cluster = req.body.cluster;
@@ -68,12 +74,3 @@ exports.login = (req, res, next) => {
     fs.writeFileSync(filePath, JSON.stringify(config));
     return res.status(200).json({message : config});
 };
-
-
-function createGroupe(params){
-    const group = new Group(params);
-
-    group.save()
-    .then(() => {console.log("Group '" + group.name + "' created")})
-    .catch((error) => {console.log(error)});
-}
