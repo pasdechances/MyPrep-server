@@ -10,7 +10,8 @@ exports.createUser = (req, res, next) => {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     login: req.body.login,
-    password: req.body.password,
+    password: bcrypt.hashSync(req.body.password, global.saltRounds),
+    groups: req.body.groups,
   });
 
   if(user.firstname === undefined || user.firstname === ''){

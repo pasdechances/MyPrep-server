@@ -3,6 +3,9 @@ const app = require('./app');
 const config = require('./config.json');
 const port = 3000;
 
+
+global.saltRounds = config.saltRounds;
+
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
