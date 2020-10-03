@@ -45,7 +45,8 @@ exports.newGroup = (req, res, next) => {
   
 };
 
-exports.createGroup = (group) => {
+exports.createGroup = (param) => {
+  group = new Group(param)
   return group.save()
 }
 
@@ -68,10 +69,17 @@ exports.getOneGroup = (req, res, next) => {
 exports.modifyGroup = (req, res, next) => {
   const group = new Group({
     _id: req.params.id,
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    login: req.body.login,
-    password: req.body.password,
+    name: "Utilisateur",
+    rights: {
+        userEditable: false,
+        groupEditable: false,
+        priceEditable: false,
+        stockUsable: true,
+        saleUsable: true,
+        paramUsable: false,
+        teletransmissionUsable: false,
+        vaccinationAllow: false,
+    } 
   });
   Group.updateOne({_id: req.params.id}, group).then(
     () => {
@@ -106,7 +114,6 @@ exports.deleteGroup = (req, res, next) => {
 
 exports.getAllGroups = (req, res, next) => {
   console.log("get all group request")
-  sleep(1)
   Group.find().then(
     (groups) => {
       res.status(200).json(groups);
