@@ -2,7 +2,7 @@ const User = require('../models/user');
 //const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
-exports.createUser = (req, res, next) => {
+exports.newUser = (req, res, next) => {
 
   console.log(req.body)
 
@@ -44,7 +44,7 @@ exports.createUser = (req, res, next) => {
     User.findOne({login: user.login}, function(err , users){
       console.log(users)
       if(!users){
-        user.save().then(
+        createUser.then(
           () => {
             res.status(201).json({
               message: 'Post saved successfully!'
@@ -56,7 +56,7 @@ exports.createUser = (req, res, next) => {
               error: error
             });
           }
-        );
+        ); 
       }else{
         res.status(201).json({
           message: 'login already exist!'
@@ -65,6 +65,10 @@ exports.createUser = (req, res, next) => {
     });
   }
 };
+
+exports.createUser = (user) => {
+  return user.save()
+}
 
 exports.getOneUser = (req, res, next) => {
   User.findOne({
@@ -144,7 +148,7 @@ function sleep(seconds)
 }
 
 exports.login = (req, res, next) => {
-  User.findOne({ email: req.body.email })
+  User.findOne({ login: req.body.username })
     .then(user => {
       if (!user) {
         return res.status(401).json({ error: 'Utilisateur non trouvé !' });
