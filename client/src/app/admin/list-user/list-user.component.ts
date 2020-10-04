@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 
 
 @Component({
-  selector: 'app-liste-user',
-  templateUrl: './liste-user.component.html',
-  styleUrls: ['./liste-user.component.scss']
+  selector: 'app-list-user',
+  templateUrl: './list-user.component.html',
+  styleUrls: ['./list-user.component.scss']
 })
-export class ListeUserComponent implements OnInit {
+export class ListUserComponent implements OnInit {
 
   @Input() eventsUser: Observable<void>;
   

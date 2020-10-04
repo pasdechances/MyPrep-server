@@ -5,12 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormUserComponent } from './form-user/form-user.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ListeUserComponent } from './liste-user/liste-user.component';
+import { FormUserComponent } from './admin/form-user/form-user.component';
+import { NavbarComponent } from './admin/navbar/navbar.component';
+import { ListUserComponent } from './admin/list-user/list-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { AuthComponent } from './auth/auth.component';
+import { MenuComponent } from './menu/menu.component';
+import { AdminComponent } from './admin/admin.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { InstallComponent } from './install/install.component';
 
 
 @NgModule({
@@ -18,7 +21,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     FormUserComponent,
     NavbarComponent,
-    ListeUserComponent,
+    ListUserComponent,
+    AuthComponent,
+    MenuComponent,
+    AdminComponent,
+    NotFoundComponent,
+    InstallComponent,
   ],
   imports: [
     BrowserModule,

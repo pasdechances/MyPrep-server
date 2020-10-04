@@ -1,0 +1,12 @@
+<div>
+    <app-navbar></app-navbar>
+
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="First">
+            <app-form-user (eventUser)="pass()"></app-form-user>
+        </mat-tab>
+        <mat-tab label="Second">
+            <app-list-user [eventsUser]="eventsUser.asObservable()"></app-list-user>
+        </mat-tab>
+    </mat-tab-group>
+</div>
