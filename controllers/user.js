@@ -76,8 +76,9 @@ createUser = (param) => {
 exports.createUser = createUser
 
 exports.getOneUser = (req, res, next) => {
+  console.log(req.params.id)
   User.findOne({
-    id: req.params.id
+    _id: req.params.id
   }).then(
     (user) => {
       res.status(200).json(user);

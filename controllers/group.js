@@ -53,7 +53,7 @@ exports.createGroup = createGroup
 
 exports.getOneGroup = (req, res, next) => {
   Group.findOne({
-    id: req.params.id
+    _id: req.params.id
   }).then(
     (group) => {
       res.status(200).json(group);
