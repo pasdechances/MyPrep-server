@@ -35,36 +35,20 @@ exports.newUser = (req, res, next) => {
       error: 'password is empty :('
     });
   }
-
-  if(user.login === undefined || user.login === ''){
-    console.log('login vide');
-    return res.status(403).json({
-      error: 'login is empty :('
-    });
-  } else {
     User.findOne({login: user.login}, function(err , users){
-      console.log(users)
-      if(!users){
-        createUser(user).then(
-          () => {
-            res.status(201).json({
-              message: 'Post saved successfully!'
-            });
-          }
-        ).catch(
-          (error) => {
-            res.status(400).json({
-              error: error
-            });
-          }
-        ); 
-      }else{
-        res.status(201).json({
-          message: 'login already exist!'
-        });
-      }         
+      createUser(user).then(
+        () => {
+          // on a pu creer le user fait un truc
+          res.status(201).json({
+            message: 'Post saved successfully!'
+          });
+        }
+      ).catch((var1) => {
+        console.log(var1.errors)
+        // on a pas pu créer le user fait un truc 
+      }
+      ); 
     });
-  }
 };
 
 createUser = (param) => {
@@ -139,13 +123,15 @@ exports.getAllUsers = (req, res, next) => {
       res.status(200).json(users);
     }
   ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
+    catch_error(msg)
   );
 };
+
+catch_error = (res,error) => {
+  res.status(400).json({
+    error: error
+  });
+}
 
 function sleep(seconds)
 {

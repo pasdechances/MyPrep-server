@@ -10,4 +10,10 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button>
+
+<ul class="nav navbar-nav">
+  <li routerLinkActive="active"><a routerLink="/auth">Auth</a></li>
+  <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
+  <li routerLinkActive="active" *ngIf="authStatus" (click)="onSignOut()"><a routerLink="/">deconnexion</a></li>
+</ul>
 </mat-toolbar>

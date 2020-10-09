@@ -5,13 +5,15 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { InstallComponent } from './install/install.component';
+import { AuthGuard } from './services/auth-guard.service';
+
+
 
 const routes: Routes = [
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', canActivate: [AuthGuard], component: AdminComponent },
   { path: 'auth', component: AuthComponent },
-  { path: '', component: MenuComponent },
+  { path: '', canActivate: [AuthGuard], component: MenuComponent },
   { path: 'not-found', component: NotFoundComponent },
-  { path: 'install', component: InstallComponent },
   { path: '**', redirectTo: 'not-found' }
 ];
 
