@@ -3,6 +3,7 @@ const router = express.Router();
 
 const installCtrl = require('../controllers/install');
 
-router.post('/', installCtrl.login);
+router.post('/', installCtrl.install);
+router.get('/', installCtrl.checkInstall);
 
 module.exports = router;

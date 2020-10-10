@@ -6,7 +6,7 @@ const userCtrl = require('../controllers/user');
 const groupCtrl = require('../controllers/group');
 
 
-exports.login = (req, res, next) => {
+exports.install = (req, res, next) => {
     let config = JSON.parse(fs.readFileSync(filePath));
 
     if(config.installed)return res.status(401).json({error: 'Server already initialized' });
@@ -74,3 +74,9 @@ exports.login = (req, res, next) => {
     fs.writeFileSync(filePath, JSON.stringify(config));
     return res.status(200).json({message : config});
 };
+
+
+exports.checkInstall = (req, res, next) => {
+    let config = JSON.parse(fs.readFileSync(filePath));
+    return res.status(200).json(config.installed);
+}
