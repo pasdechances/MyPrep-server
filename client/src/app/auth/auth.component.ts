@@ -17,8 +17,13 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSignIn() {
-    this.authService.signIn()
+
+  onSignIn(event) {
+    var data = new Login()
+    data.username = event.target.login.value
+    data.password = event.target.password.value
+    
+    this.authService.signIn(data)
     .then(
       () => {
         console.log('Sign in successful!');
@@ -33,3 +38,9 @@ export class AuthComponent implements OnInit {
     )
   }
 }
+
+export class Login {
+  username: String;
+  password: String;
+}
+

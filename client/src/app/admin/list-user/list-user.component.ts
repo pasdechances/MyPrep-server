@@ -31,7 +31,7 @@ export class ListUserComponent implements OnInit {
         console.log(responseBody[0]);
         this.loaderStatus = false;
         this.dataSource = responseBody;
-    }); 
+    });
   }
 
 }

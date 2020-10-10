@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
@@ -9,27 +10,36 @@ import {BehaviorSubject, Observable} from 'rxjs';
 export class AuthService {
 
   private isAuth: BehaviorSubject<boolean>;
+  url = environment.apiUrl + 'auth/';
   private token
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.isAuth = new BehaviorSubject<boolean>(false);
   }
 
-  signIn() {
+  signIn(data) {
+    console.log(data)
     return new Promise(
       (resolve, reject) => {
-        setTimeout(
-          () => {
-            this.set(true)
-            resolve(true);
-          }, 2000
-        );
+        this.http.post(this.url, data).subscribe((responseBody) => { 
+          this.set(responseBody)
+          resolve(responseBody)
+        });
       }
     );
   }
 
   signOut() {
-    this.set(false)
+    return new Promise(
+      (resolve, reject) => {
+        this.http.delete(this.url).subscribe((responseBody) => { 
+          if(responseBody){
+            this.set(false)
+          }  
+          resolve(responseBody)
+        });
+      }
+    );
   }
 
   get(): Observable<boolean> {

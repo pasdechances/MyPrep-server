@@ -1,16 +1,19 @@
-<table>   
-    <tr>
-        <td><mat-form-field appearance="fill">
-            <mat-label>Login</mat-label>
-            <input matInput name="firstname">
-        </mat-form-field></td>
-    </tr> 
-    <tr>
-        <td><mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput name="lastname">
-        </mat-form-field></td>
-    </tr>
-</table>
 
-<button (click)="onSignIn()"> go to home</button>
+<form (submit)="onSignIn($event)">
+    <table>   
+        <tr>
+            <td><mat-form-field appearance="fill">
+                <mat-label>Login</mat-label>
+                <input matInput name="login">
+            </mat-form-field></td>
+        </tr> 
+        <tr>
+            <td><mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput name="password">
+            </mat-form-field></td>
+        </tr>
+    </table>
+    
+    <button type=submit> go to home</button>
+</form>
