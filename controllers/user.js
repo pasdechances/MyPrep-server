@@ -122,16 +122,13 @@ exports.getAllUsers = (req, res, next) => {
     (users) => {
       res.status(200).json(users);
     }
-  ).catch(
-    catch_error(msg)
+  ).catch((res,error) => {
+    res.status(400).json({
+      error: error
+    });
+  }
   );
-};
-
-catch_error = (res,error) => {
-  res.status(400).json({
-    error: error
-  });
-}
+}; 
 
 function sleep(seconds)
 {
