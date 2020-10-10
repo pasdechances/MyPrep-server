@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,22 +10,30 @@ import { Observable } from 'rxjs';
 
 export class UserService {
 
-  user = []
+  private headers: HttpHeaders
+  private url = environment.apiUrl + 'user/';
 
-  constructor(private http: HttpClient) { }
-
-    url = '/api/user/';
+  constructor(
+    private http: HttpClient,
+    private AuthService: AuthService
+    ){ 
+      this.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `{Bearer ${this.AuthService.getToken()}`
+      })
+    }
   
     getUsers() {
-      return this.http.get(this.url);
+      return this.http.get(this.url, { headers: this.headers });
     }
 
     getUser(data) {
-      return this.http.get(this.url + data);
+      
+      return this.http.get(this.url + data, { headers: this.headers });
     }
 
     createUser(data: Object): Observable<Object> {
-      return this.http.post(this.url, data);
+      return this.http.post(this.url, data, { headers: this.headers });
     }
 }
 

@@ -9,22 +9,27 @@ import {BehaviorSubject, Observable} from 'rxjs';
 
 export class AuthService {
 
-  private isAuth: BehaviorSubject<boolean>;
+  private user = new profile;
   url = environment.apiUrl + 'auth/';
-  private token
 
   constructor(private http: HttpClient) {
-    this.isAuth = new BehaviorSubject<boolean>(false);
+    this.user.isAuth = new BehaviorSubject<boolean>(false);
   }
 
   signIn(data) {
-    console.log(data)
     return new Promise(
       (resolve, reject) => {
+        
         this.http.post(this.url, data).subscribe((responseBody) => { 
           this.set(responseBody)
-          resolve(responseBody)
+          resolve(true)
+        },
+        (error) =>{
+          reject(error.error.error)
+          console.log(error.error.error)
         });
+      
+          
       }
     );
   }
@@ -33,9 +38,7 @@ export class AuthService {
     return new Promise(
       (resolve, reject) => {
         this.http.delete(this.url).subscribe((responseBody) => { 
-          if(responseBody){
-            this.set(false)
-          }  
+          this.destroy()
           resolve(responseBody)
         });
       }
@@ -43,10 +46,28 @@ export class AuthService {
   }
 
   get(): Observable<boolean> {
-    return this.isAuth.asObservable();
+    return this.user.isAuth.asObservable();
+  }
+
+  getToken() {
+    return this.user.token;
   }
 
   set(newValue): void {
-    this.isAuth.next(newValue);
+    this.user.token = newValue.token
+    this.user.userId = newValue.userId
+    this.user.isAuth.next(true)
   }
+
+  destroy(): void {
+    this.user.token = ''
+    this.user.userId = ''
+    this.user.isAuth.next(false)
+  }
+}
+
+export class profile {
+  token: String;
+  userId: String;
+  isAuth: BehaviorSubject<boolean>;
 }

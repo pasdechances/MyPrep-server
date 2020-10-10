@@ -32,7 +32,7 @@ export class AuthComponent implements OnInit {
     )
     .catch(
       () => {
-        console.log('Sign in successful!');
+        console.log('auth failed');
         this.router.navigate(['/auth']);
       }
     )
