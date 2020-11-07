@@ -17,11 +17,13 @@ var corsOptions = config.cors    //some legacy browsers (IE11, various SmartTVs)
 app.use(cors(corsOptions))
 
 const userRoutes = require('./routes/user');
+const groupRoutes = require('./routes/group');
 const authRoutes = require('./routes/auth');
 const installRoutes = require('./routes/install');
 
 app.use(bodyParser.json());
 app.use('/api/user', userRoutes);
+app.use('/api/group', groupRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/install', installRoutes);
 

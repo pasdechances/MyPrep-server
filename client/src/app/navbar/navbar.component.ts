@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  isExpanded = false;
   authStatus: boolean;
   
   constructor(private authService: AuthService,private router: Router) { }

@@ -1,20 +1,48 @@
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
+
+
+<mat-drawer #drawer mode="side" disableClose="true" opened="true"  class="green">
+  <button mat-mini-fab class="button" [ngClass]="isExpanded ? 'open' : ''" (click)="isExpanded = !isExpanded" style="margin: 10px;">
+      <mat-icon [ngClass]="isExpanded ? 'main-icon-expended' : ''">games</mat-icon> 
+      <h4 class="title"  *ngIf="isExpanded">My pharma</h4>
   </button>
 
-<ul class="nav navbar-nav">
-  <li routerLinkActive="active"><a routerLink="/auth">Auth</a></li>
-  <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
-  <li routerLinkActive="active"><a routerLink="/">Home</a></li>
-  <li routerLinkActive="active" *ngIf="authStatus" (click)="onSignOut()"><a routerLink="/">deconnexion</a></li>
-</ul>
-</mat-toolbar>
+  <mat-nav-list>
+      <mat-list-item routerLinkActive="active" routerLink="/">
+          <mat-icon mat-list-icon>home</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Home</h4>
+      </mat-list-item>
+      <mat-list-item routerLinkActive="active" routerLink="/admin">
+          <mat-icon mat-list-icon>settings</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Administration</h4>
+      </mat-list-item>
+      <mat-list-item>
+          <mat-icon mat-list-icon>medical_services</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Stock</h4>
+      </mat-list-item>
+      <mat-list-item>
+          <mat-icon mat-list-icon>local_shipping</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Commandes</h4>
+      </mat-list-item>
+  </mat-nav-list>
+
+  
+
+
+
+  <mat-nav-list class="account-list">
+      <hr>
+      <mat-list-item>
+          <mat-icon mat-list-icon>person</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Mon profil</h4>
+      </mat-list-item>
+      <mat-list-item *ngIf="authStatus" (click)="onSignOut()" routerLink="/">
+          <mat-icon mat-list-icon>exit_to_app</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Déconnexion</h4>
+      </mat-list-item>
+  </mat-nav-list>
+
+  <button mat-mini-fab class="help-button" [ngClass]="isExpanded ? 'open' : ''" >
+      <mat-icon [ngClass]="isExpanded ? 'help-icon-expended' : ''">local_fire_department</mat-icon> 
+      <h4 class="title"  *ngIf="isExpanded">Help</h4>
+  </button>
+</mat-drawer>

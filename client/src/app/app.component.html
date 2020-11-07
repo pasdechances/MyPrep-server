@@ -1,9 +1,17 @@
-<app-navbar></app-navbar>
 
-<div class="container">
+<mat-drawer-container class="example-container mat-typography " autosize>
+    <app-navbar></app-navbar>
+  
+    <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+
+<!-- <div class="container">
     <div class="row">
         <div class="col-xs-12">
             <router-outlet></router-outlet>
         </div>
     </div>
-</div>
+</div> -->
+
+</mat-drawer-container>
