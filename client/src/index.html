@@ -10,6 +10,80 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="mat-typography">
+  <div id="loader" style="position:absolute;width:100vw;height:100vh;background-color: darkgrey;">
+    <style>
+      .loader-container{
+        position: relative; /* postulat de départ */
+        width:200px; 
+        height:200px; 
+        margin-top: calc(50vh - 100px);; 
+        margin-left: calc(50vw - 100px); 
+      }
+      .loader-container div {
+        position:absolute;
+        border-radius: 50%;
+        text-align: center;
+      }
+      .loader-container div:nth-child(1),
+      .loader-container div:nth-child(3){
+        -webkit-animation: unspin 2s linear infinite;
+        animation: unspin 2s linear infinite;
+      }
+
+      .loader-container div:nth-child(2),
+      .loader-container div:nth-child(4){
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
+
+      .loader-container div:nth-child(1) {
+        top:0; left:0; width:100%; height:100%;
+        border-top: 22px solid #006400;
+      }
+      .loader-container div:nth-child(2) {
+        top:12.5%; left:12.5%; width: 75%; height: 75%;
+        border-right: 18px solid #134f5cff;
+      }
+      .loader-container div:nth-child(3) {
+        top:25%; left:25%; width: 50%; height: 50%;
+        border-bottom: 14px solid #45818eff;
+      }
+      .loader-container div:nth-child(4) {
+        top:37.5%; left:37.5%; width: 25%; height:25%;
+        border-left: 10px solid #be3232;
+      }
+
+      .loader-container div:nth-child(5) {
+        top:110%; left:calc(50% - 100px); width: 200px;
+      }
+      
+      @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @-webkit-keyframes unspin {
+        0% { -webkit-transform: rotate(360deg); }
+        100% { -webkit-transform: rotate(0deg); }
+      }
+      @keyframes unspin {
+        0% { transform: rotate(360deg); }
+        100% { transform: rotate(0deg); }
+      }
+    </style>
+    <div class="loader-container">
+      <div></div>
+      <div></div> 
+      <div></div> 
+      <div></div>
+      <div>Loading</div>
+    </div>
+
+  </div>
   <app-root></app-root>
 </body>
 </html>
