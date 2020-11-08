@@ -6,12 +6,12 @@
         </button>
     
         <div class="user_menu">
-            <mat-nav-list>
-                <mat-list-item routerLinkActive="active" routerLink="/">
+            <mat-nav-list routerLinkActive="active">
+                <mat-list-item routerLink="/">
                     <mat-icon mat-list-icon>home</mat-icon>
                     <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Home</h4>
                 </mat-list-item>
-                <mat-list-item routerLinkActive="active" routerLink="/admin">
+                <mat-list-item routerLink="/admin">
                     <mat-icon mat-list-icon>settings</mat-icon>
                     <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Administration</h4>
                 </mat-list-item>
@@ -28,7 +28,7 @@
         </div>
         <div class="account-list">
             <mat-divider></mat-divider>
-            <mat-nav-list >
+            <mat-nav-list routerLinkActive="active">
                 <mat-list-item>
                     <mat-icon mat-list-icon>person</mat-icon>
                     <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Mon profil</h4>
@@ -40,7 +40,7 @@
             </mat-nav-list>
         </div>
         <div> 
-            <mat-nav-list >
+            <mat-nav-list>
                 <mat-list-item class="help-button">
                     <mat-icon mat-list-icon>local_fire_department</mat-icon>
                     <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Help</h4>
