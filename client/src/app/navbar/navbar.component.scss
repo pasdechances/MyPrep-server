@@ -8,8 +8,8 @@
 
   .button{
       border-radius: 30px;
-      color: darkgreen;
-      background-color: white;
+      color: #006400;
+      background-color: #efefefff;
   }
 
   .open{
@@ -26,19 +26,20 @@
   }
 
   .green{
-    background-color: darkgreen;
-    color: honeydew;
+    background-color: #006400;
+    color: #efefefff
+    ;
   }
 
   .green .mat-list-icon,
   .green .mat-line{
-    color: honeydew;
+    color: #efefefff;
   }
 
 
   .help-button{
-    background-color: rgb(190, 50, 50);
-    color: honeydew;
+    background-color: #be3232;
+    color: #efefefff;
     border: none;
     width: 100%;
     height: 40px;
