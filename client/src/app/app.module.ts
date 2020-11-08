@@ -24,10 +24,10 @@ import { SidenavService } from './services/sidenav.service'
     NavbarComponent,
     ListUserComponent,
     AuthComponent,
-    MenuComponent,
     AdminComponent,
     NotFoundComponent,
     InstallComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
