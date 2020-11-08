@@ -14,6 +14,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { InstallComponent } from './install/install.component';
 import { SearchComponent } from './search/search.component';
+import { SidenavService } from './services/sidenav.service'
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { SearchComponent } from './search/search.component';
     BrowserAnimationsModule,
   ],
   exports:[],
-  providers: [],
+  providers: [SidenavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

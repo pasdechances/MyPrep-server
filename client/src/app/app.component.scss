@@ -1,11 +1,16 @@
-.example-container {
-  width: 100vw;
+.green{
+  background-color: #006400;
+  color: #efefefff;
+  border:none;
+}
+
+.sidenav_container {
+  min-width: 60px; 
   height: 100vh;
 }
 
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+.main_content {
+  width:100%; 
+  height: 100vh ; 
+  background: #efefef;
 }

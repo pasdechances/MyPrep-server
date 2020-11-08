@@ -1,43 +1,98 @@
+<div class="sidenav_container"  [@onSideNavChange]="sideNavState ? 'open' : 'close'">
+    <div fxLayout="column" fxLayoutGap="10px" style="height: 100%;">
+        <button mat-mini-fab class="title-button" [ngClass]="sideNavState ? 'open' : ''" (click)="onSinenavToggle()" style="margin: 10px;">
+            <mat-icon [ngClass]="sideNavState ? 'main-icon-expended' : ''">games</mat-icon> 
+            <h4 class="title" [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">My pharma</h4>
+        </button>
+    
+        <div class="user_menu">
+            <mat-nav-list>
+                <mat-list-item routerLinkActive="active" routerLink="/">
+                    <mat-icon mat-list-icon>home</mat-icon>
+                    <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Home</h4>
+                </mat-list-item>
+                <mat-list-item routerLinkActive="active" routerLink="/admin">
+                    <mat-icon mat-list-icon>settings</mat-icon>
+                    <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Administration</h4>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>medical_services</mat-icon>
+                    <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Stock</h4>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>local_shipping</mat-icon>
+                    <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Commandes</h4>
+                </mat-list-item>
+            </mat-nav-list>
+            
+        </div>
+        <div class="account-list">
+            <mat-divider></mat-divider>
+            <mat-nav-list >
+                <mat-list-item>
+                    <mat-icon mat-list-icon>person</mat-icon>
+                    <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Mon profil</h4>
+                </mat-list-item>
+                <mat-list-item *ngIf="authStatus" (click)="onSignOut()" routerLink="/">
+                    <mat-icon mat-list-icon>exit_to_app</mat-icon>
+                    <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Déconnexion</h4>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+        <div> 
+            <mat-nav-list >
+                <mat-list-item class="help-button">
+                    <mat-icon mat-list-icon>local_fire_department</mat-icon>
+                    <h4 mat-line [@animateText]="linkText ? 'show' : 'hide'" *ngIf="sideNavState">Help</h4>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+    </div>
+</div>
 
 
-<mat-drawer #drawer mode="side" disableClose="true" opened="true"  class="green">
-  <button mat-mini-fab class="button" [ngClass]="isExpanded ? 'open' : ''" (click)="isExpanded = !isExpanded" style="margin: 10px;">
-      <mat-icon [ngClass]="isExpanded ? 'main-icon-expended' : ''">games</mat-icon> 
-      <h4 class="title"  *ngIf="isExpanded">My pharma</h4>
+
+
+
+<!-- 
+<mat-drawer #drawer class="example-sidenav" mode="side" disableClose="true" opened="true"  class="green">
+  <button mat-mini-fab class="button" [ngClass]="sideNavState ? 'open' : ''" (click)="sideNavState = !sideNavState" style="margin: 10px;">
+      <mat-icon [ngClass]="sideNavState ? 'main-icon-expended' : ''">games</mat-icon> 
+      <h4 class="title"  *ngIf="sideNavState">My pharma</h4>
   </button>
 
   <mat-nav-list>
       <mat-list-item routerLinkActive="active" routerLink="/">
           <mat-icon mat-list-icon>home</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Home</h4>
+          <h4 mat-line *ngIf="sideNavState">Home</h4>
       </mat-list-item>
       <mat-list-item routerLinkActive="active" routerLink="/admin">
           <mat-icon mat-list-icon>settings</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Administration</h4>
+          <h4 mat-line *ngIf="sideNavState">Administration</h4>
       </mat-list-item>
       <mat-list-item>
           <mat-icon mat-list-icon>medical_services</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Stock</h4>
+          <h4 mat-line *ngIf="sideNavState">Stock</h4>
       </mat-list-item>
       <mat-list-item>
           <mat-icon mat-list-icon>local_shipping</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Commandes</h4>
+          <h4 mat-line *ngIf="sideNavState">Commandes</h4>
       </mat-list-item>
   </mat-nav-list>
   <mat-nav-list class="account-list">
       <hr>
       <mat-list-item>
           <mat-icon mat-list-icon>person</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Mon profil</h4>
+          <h4 mat-line *ngIf="sideNavState">Mon profil</h4>
       </mat-list-item>
       <mat-list-item *ngIf="authStatus" (click)="onSignOut()" routerLink="/">
           <mat-icon mat-list-icon>exit_to_app</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Déconnexion</h4>
+          <h4 mat-line *ngIf="sideNavState">Déconnexion</h4>
       </mat-list-item>
   </mat-nav-list>
 
-  <button mat-mini-fab class="help-button" [ngClass]="isExpanded ? 'open' : ''" >
-      <mat-icon [ngClass]="isExpanded ? 'help-icon-expended' : ''">local_fire_department</mat-icon> 
-      <h4 class="title"  *ngIf="isExpanded">Help</h4>
+  <button mat-mini-fab class="help-button" [ngClass]="sideNavState ? 'open' : ''" >
+      <mat-icon [ngClass]="sideNavState ? 'help-icon-expended' : ''">local_fire_department</mat-icon> 
+      <h4 class="title"  *ngIf="sideNavState">Help</h4>
   </button>
-</mat-drawer>
+</mat-drawer> -->
