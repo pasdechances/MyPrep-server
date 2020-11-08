@@ -5,8 +5,9 @@
     padding-bottom: 10vh;
     padding-left: 10vw;
     border: 2px solid #434343ff;
-    background-color: #efefefff;
+    background-color: rgba(239, 239, 239, 0.733);
     backdrop-filter:  blur(5px);
+    text-align: center;
 }
 
 .auth-screen{
@@ -29,4 +30,9 @@
 
 .auth-button:hover{
     background-color: #45818eff;
+}
+
+
+.mat-form-field{
+    width: 30vh;
 }
