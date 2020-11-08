@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MenuComponent } from './menu/menu.component';
+import { SearchComponent } from './search/search.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -10,10 +10,10 @@ import { InstallGuard, InstalledGuard } from './services/install-guard.service';
 
 
 const routes: Routes = [
-  { path: 'admin', canActivate: [AuthGuard], component: AdminComponent },
-  { path: 'auth', canActivate: [InstallGuard], component: AuthComponent },
-  { path: '', canActivate: [AuthGuard], component: MenuComponent },
   { path: 'install', canActivate: [InstalledGuard], component: InstallComponent },
+  { path: '', canActivate: [AuthGuard], component: SearchComponent },
+  { path: 'auth', canActivate: [InstallGuard], component: AuthComponent },
+  { path: 'admin', canActivate: [AuthGuard], component: AdminComponent },  
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found' }
 ];
