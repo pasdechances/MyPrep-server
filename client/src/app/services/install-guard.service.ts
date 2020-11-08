@@ -16,8 +16,15 @@ export class InstallGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       console.log('install guard')
       this.install.get().subscribe((value)=> {
-        if(!value){
+        console.log(value)
+        if(value == 'false'){
           this.router.navigate(['/install']);
+        }
+        else if(value == 'true'){
+          this.router.navigate(['/']);
+        }
+        else if(value == 'Unreachable'){
+          this.router.navigate(['/not-found']);
         }
       })
       return true;

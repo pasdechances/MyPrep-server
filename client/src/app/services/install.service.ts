@@ -9,26 +9,28 @@ import {BehaviorSubject, Observable} from 'rxjs';
 
 export class InstallService {
 
-  private isInstalled: BehaviorSubject<boolean>;
+  private isInstalled: BehaviorSubject<String>;
   private url = environment.apiUrl + 'install/';
 
   constructor(private http: HttpClient) {
     this.checkInstall()
-    this.isInstalled = new BehaviorSubject<boolean>(false);
+    this.isInstalled = new BehaviorSubject<String>('');
   }
 
   checkInstall() {
     return new Promise(
       (resolve, reject) => {
-        this.http.get(this.url).subscribe((responseBody : boolean) => { 
+        this.http.get(this.url).subscribe((responseBody : String) => { 
           this.set(responseBody)
-          resolve(responseBody)
+        },
+        (error) => {
+          this.set('Unreachable')
         }); 
       }
     );
   }
 
-  get(): Observable<boolean> {
+  get(): Observable<String> {
     return this.isInstalled.asObservable();
   }
 
