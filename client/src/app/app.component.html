@@ -1,6 +1,6 @@
 
 <mat-drawer-container class="example-container mat-typography " autosize>
-    <app-navbar></app-navbar>
+    <app-navbar *ngIf="authStatus"></app-navbar>
   
     <div class="example-sidenav-content">
         <router-outlet></router-outlet>

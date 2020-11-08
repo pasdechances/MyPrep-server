@@ -10,10 +10,13 @@ import { AuthService } from './services/auth.service';
 
 export class AppComponent {
   
+  authStatus: boolean;
+
   constructor(private authService: AuthService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.authService.get().subscribe((value) => {
+      this.authStatus = value;
+    });
   }
-
-  isExpanded = false;
 }
