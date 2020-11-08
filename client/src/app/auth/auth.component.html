@@ -1,19 +1,23 @@
+<div class="auth-screen" [ngStyle]='bkUrl'>
+    <form (submit)="onSignIn($event)" class="auth-form">
+        <table>   
+            <tr>
+                <td><mat-form-field appearance="fill">
+                    <mat-label>Login</mat-label>
+                    <input matInput name="login">
+                </mat-form-field></td>
+            </tr> 
+            <tr>
+                <td><mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput name="password" type="password">
+                </mat-form-field></td>
+            </tr>
+        </table>
+        
 
-<form (submit)="onSignIn($event)">
-    <table>   
-        <tr>
-            <td><mat-form-field appearance="fill">
-                <mat-label>Login</mat-label>
-                <input matInput name="login">
-            </mat-form-field></td>
-        </tr> 
-        <tr>
-            <td><mat-form-field appearance="fill">
-                <mat-label>Password</mat-label>
-                <input matInput name="password">
-            </mat-form-field></td>
-        </tr>
-    </table>
-    
-    <button type=submit> go to home</button>
-</form>
+        <button mat-mini-fab class="auth-button" type="submit">
+            Connexion
+        </button>
+    </form>
+</div>

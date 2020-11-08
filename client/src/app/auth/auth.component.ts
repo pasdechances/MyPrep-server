@@ -10,13 +10,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class AuthComponent implements OnInit {
 
+  bkUrl = {};
+
   constructor(
     private authService: AuthService,
     private router: Router) { }
 
   ngOnInit() {
+    this.bkUrl = this.getBackgroundImageUrl();
   }
-
 
   onSignIn(event) {
     var data = new Login()
@@ -37,6 +39,16 @@ export class AuthComponent implements OnInit {
       }
     )
   }
+
+  getBackgroundImageUrl() { 
+    const styles = {
+      'background-image': 'url(https://pharmacieabbi.pharminfo.fr/static/clients/1651/images/visual/devanture.JPG)'
+    };
+    console.log(styles);
+    return styles;
+  }
+
+
 }
 
 export class Login {
