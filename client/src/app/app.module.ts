@@ -10,10 +10,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ListUserComponent } from './admin/list-user/list-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './auth/auth.component';
-import { MenuComponent } from './menu/menu.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { InstallComponent } from './install/install.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
