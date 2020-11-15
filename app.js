@@ -18,12 +18,20 @@ app.use(cors(corsOptions))
 
 const userRoutes = require('./routes/user');
 const groupRoutes = require('./routes/group');
+const drugRoutes = require('./routes/drug');
+const productRoutes = require('./routes/product');
+const patientRoutes = require('./routes/patient');
+const prescriberRoutes = require('./routes/prescriber');
 const authRoutes = require('./routes/auth');
 const installRoutes = require('./routes/install');
 
 app.use(bodyParser.json());
 app.use('/api/user', userRoutes);
 app.use('/api/group', groupRoutes);
+app.use('/api/drug', drugRoutes);
+app.use('/api/product', productRoutes);
+app.use('/api/patient', patientRoutes);
+app.use('/api/prescriber', prescriberRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/install', installRoutes);
 
