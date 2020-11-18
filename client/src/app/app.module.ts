@@ -14,7 +14,13 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { InstallComponent } from './install/install.component';
 import { SearchComponent } from './search/search.component';
-import { SidenavService } from './services/sidenav.service'
+import { SidenavService } from './services/sidenav.service';
+import { ListGroupsComponent } from './components/list-groups/list-groups.component';
+import { ListPatientsComponent } from './components/list-patients/list-patients.component';
+import { ListProductsComponent } from './components/list-products/list-products.component';
+import { FormProductsComponent } from './components/form-products/form-products.component';
+import { FormPatientsComponent } from './components/form-patients/form-patients.component';
+import { FormGroupsComponent } from './components/form-groups/form-groups.component'
 
 
 @NgModule({
@@ -28,6 +34,12 @@ import { SidenavService } from './services/sidenav.service'
     NotFoundComponent,
     InstallComponent,
     SearchComponent,
+    ListGroupsComponent,
+    ListPatientsComponent,
+    ListProductsComponent,
+    FormProductsComponent,
+    FormPatientsComponent,
+    FormGroupsComponent,
   ],
   imports: [
     BrowserModule,
