@@ -1,0 +1,9 @@
+<mat-form-field appearance="fill" (click)="dp.open()">
+    <mat-label>{{DatePickerName}}</mat-label>
+    <input matInput [matDatepicker]="dp">
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp
+                    startView="multi-year"
+                    panelClass="example-month-picker">
+    </mat-datepicker>
+</mat-form-field>
