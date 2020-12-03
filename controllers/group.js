@@ -51,6 +51,22 @@ createGroup = (param) => {
 }
 exports.createGroup = createGroup
 
+exports.getOneGroupByName = (req, res, next) => {
+  Group.findOne({
+    name: req.params.id
+  }).then(
+    (group) => {
+      res.status(200).json(group);
+    }
+  ).catch(
+    (error) => {
+      res.status(404).json({
+        error: error
+      });
+    }
+  );
+};
+
 exports.getOneGroup = (req, res, next) => {
   Group.findOne({
     _id: req.params.id
