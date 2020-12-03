@@ -32,6 +32,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 const MaterialComponents = [
@@ -68,6 +70,8 @@ const MaterialComponents = [
   MatTableModule,
   MatTabsModule,
   MatTooltipModule,
+  MatNativeDateModule,
+  MatMomentDateModule,
 ]
 
 @NgModule({

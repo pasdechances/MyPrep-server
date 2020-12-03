@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <mat-sidenav-container class="sidenav-container">
         <mat-sidenav #leftSidenav mode="side" opened class="green" *ngIf="authStatus">
             <app-navbar></app-navbar>
@@ -11,4 +11,34 @@
         </mat-sidenav-content>
     </mat-sidenav-container>
     
+</div> -->
+
+<div>
+    <mat-tab-group mat-align-tabs="center">
+        <!-- <mat-tab label="user">
+            <div style="width: 400px; margin-top:100px;margin-left:calc(50% - 200px);">
+                <app-form-user></app-form-user>
+            </div>
+        </mat-tab>
+        <mat-tab label="medics">
+            <div style="width: 400px; margin-top:100px;margin-left:calc(50% - 200px);">
+                <app-form-medics></app-form-medics>
+            </div>
+        </mat-tab>
+        <mat-tab label="patients">
+            <div style="width: 400px; margin-top:100px;margin-left:calc(50% - 200px);">
+                <app-form-patients></app-form-patients>
+            </div>
+        </mat-tab> -->
+        <mat-tab label="products">
+            <div style="width: 400px; margin-top:100px;margin-left:calc(50% - 200px);">
+                <app-form-products></app-form-products>
+            </div>
+        </mat-tab>
+        <mat-tab label="groups">
+            <div style="width: 400px; margin-top:100px;margin-left:calc(50% - 200px);">
+                <app-form-groups></app-form-groups>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 </div>

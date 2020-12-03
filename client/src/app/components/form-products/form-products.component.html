@@ -1,1 +1,145 @@
-<p>form-products works!</p>
+<mat-card>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Laboratoire</mat-label>
+                        <input matInput name="Laboratoire"
+                            type="text"
+                            matInput 
+                            [formControl]="labos"
+                            [matAutocomplete]="auto">
+                    </mat-form-field>
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredLabos | async" [value]="option">
+                          {{listLabos}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>libelle</mat-label>
+                        <input matInput name="firstname">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>nom</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>principeactif</mat-label>
+                        <input matInput name="lastname">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-slide-toggle [(ngModel)]="isGenerique" [ngModelOptions]="{standalone: true}">isGenerique</mat-slide-toggle>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Générique de </mat-label>
+                        <input #generique type="text"
+                            placeholder="Pick one"
+                            matInput 
+                            [disabled]="isGenerique"
+                            [formControl]="generiques"
+                            [matAutocomplete]="auto">  
+                    </mat-form-field>
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredGeneriques | async" [value]="option">
+                          {{listGeneriques}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>CIP</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>code produit</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>dosage</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <app-datepicker-classic [name] = "dPC"></app-datepicker-classic>
+                </td>
+                <td>
+                    <app-datepicker-monthyear [name] = "dPM"></app-datepicker-monthyear>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>prix achat</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>prix catalogue</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>prix net</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>qte</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Pharmacopee</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>message</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    
+        <p>
+            <button mat-raised-button type="submit">Basic</button>
+        </p>
+
+    </form>
+</mat-card>

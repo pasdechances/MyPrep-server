@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
@@ -20,7 +20,14 @@ import { ListPatientsComponent } from './components/list-patients/list-patients.
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { FormProductsComponent } from './components/form-products/form-products.component';
 import { FormPatientsComponent } from './components/form-patients/form-patients.component';
-import { FormGroupsComponent } from './components/form-groups/form-groups.component'
+import { FormGroupsComponent } from './components/form-groups/form-groups.component';
+import { FormMedicsComponent } from './components/form-medics/form-medics.component';
+import { ListMedicsComponent } from './components/list-medics/list-medics.component';
+import { DatepickerYearfirstComponent } from './components/datepicker/datepicker-yearfirst/datepicker-yearfirst.component';
+import { DatepickerMonthyearComponent } from './components/datepicker/datepicker-monthyear/datepicker-monthyear.component';
+import { DatepickerClassicComponent } from './components/datepicker/datepicker-classic/datepicker-classic.component';
+
+
 
 
 @NgModule({
@@ -40,6 +47,11 @@ import { FormGroupsComponent } from './components/form-groups/form-groups.compon
     FormProductsComponent,
     FormPatientsComponent,
     FormGroupsComponent,
+    FormMedicsComponent,
+    ListMedicsComponent,
+    DatepickerYearfirstComponent,
+    DatepickerMonthyearComponent,
+    DatepickerClassicComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +60,7 @@ import { FormGroupsComponent } from './components/form-groups/form-groups.compon
     MaterialModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   exports:[],
   providers: [SidenavService],

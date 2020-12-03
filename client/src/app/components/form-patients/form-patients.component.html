@@ -1,1 +1,102 @@
-<p>form-patients works!</p>
+<mat-card>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>nom</mat-label>
+                        <input matInput name="firstname">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>prenom</mat-label>
+                        <input matInput name="lastname">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <app-datepicker-yearfirst [name] = "dPY"></app-datepicker-yearfirst>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>type de patient</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>poids</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <mat-form-field appearance="fill">
+                    <mat-label>catre vital</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </tr>
+            <tr>
+                <mat-form-field appearance="fill">
+                    <mat-label>mutuelle</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </tr>
+            <tr>
+                <mat-form-field appearance="fill">
+                    <mat-label>téléphone</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </tr>
+            <tr>
+                <mat-form-field appearance="fill">
+                    <mat-label>mail</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>adresse</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>ville</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>cp</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>pays</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <mat-form-field appearance="fill">
+                    <mat-label>message</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </tr>
+        </table>
+
+        <p>
+            <button mat-raised-button type="submit">Basic</button>
+        </p>
+
+    </form>
+</mat-card>

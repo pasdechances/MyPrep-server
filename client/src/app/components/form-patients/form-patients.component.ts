@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormPatientsComponent implements OnInit {
 
+  dPY = "année en premier";
+
   constructor() { }
 
   ngOnInit(): void {
