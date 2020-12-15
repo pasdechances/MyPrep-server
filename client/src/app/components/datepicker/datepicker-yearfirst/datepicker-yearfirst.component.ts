@@ -6,6 +6,18 @@ import {
 } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'DD MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'DD MMMM YYYY',
+  },
+};
+
 @Component({
   selector: 'app-datepicker-yearfirst',
   templateUrl: './datepicker-yearfirst.component.html',
@@ -17,7 +29,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
-    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
   inputs: ['DatePickerName'],
 })
