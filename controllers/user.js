@@ -2,6 +2,7 @@ const User = require('../models/user');
 //const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const historyModel = require('../models/history');
 
 exports.newUser = (req, res, next) => {
 
@@ -147,6 +148,17 @@ exports.login = (req, res, next) => {
           if (!valid) {
             return res.status(401).json({ error: 'Mot de passe incorrect !' });
           }
+          
+          history = new historyModel({
+            date: Date(),
+            userId: user._id,
+            event: "vient de se connecter à l'application",
+            ip: "10.2.95.84",
+            info: "je m'apppelle melissa"
+          })
+
+          history.save();
+
           res.status(200).json({
             userId: user._id,
             token: jwt.sign(
@@ -162,5 +174,16 @@ exports.login = (req, res, next) => {
 };
 
 exports.disconnect = (req, res, next) => {
+  // console.log(req);
+  console.log(req.params);
+  history = new historyModel({
+    date: Date(),
+    userId: 'Melissa',
+    event: "vient de se deconnecter à l'application",
+    ip: "10.2.95.84",
+    info: "je m'apppelle melissa"
+  })
+
+  history.save();
   res.status(200).json({message : "disconnected"})
 }

@@ -26,7 +26,7 @@ import { ListMedicsComponent } from './components/list-medics/list-medics.compon
 import { DatepickerYearfirstComponent } from './components/datepicker/datepicker-yearfirst/datepicker-yearfirst.component';
 import { DatepickerMonthyearComponent } from './components/datepicker/datepicker-monthyear/datepicker-monthyear.component';
 import { DatepickerClassicComponent } from './components/datepicker/datepicker-classic/datepicker-classic.component';
-
+import { FormLaboComponent } from './components/form-labo/form-labo.component'
 
 
 
@@ -41,6 +41,7 @@ import { DatepickerClassicComponent } from './components/datepicker/datepicker-c
     NotFoundComponent,
     InstallComponent,
     SearchComponent,
+<<<<<<< HEAD
     ListGroupsComponent,
     ListPatientsComponent,
     ListProductsComponent,
@@ -52,6 +53,9 @@ import { DatepickerClassicComponent } from './components/datepicker/datepicker-c
     DatepickerYearfirstComponent,
     DatepickerMonthyearComponent,
     DatepickerClassicComponent,
+=======
+    FormLaboComponent,
+>>>>>>> henri
   ],
   imports: [
     BrowserModule,

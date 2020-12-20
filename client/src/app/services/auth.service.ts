@@ -9,11 +9,11 @@ import {BehaviorSubject, Observable} from 'rxjs';
 
 export class AuthService {
 
-  private user = new profile;
+  private profile = new profile;
   url = environment.apiUrl + 'auth/';
 
   constructor(private http: HttpClient) {
-    this.user.isAuth = new BehaviorSubject<boolean>(false);
+    this.profile.isAuth = new BehaviorSubject<boolean>(false);
   }
 
   signIn(data) {
@@ -37,7 +37,7 @@ export class AuthService {
   signOut() {
     return new Promise(
       (resolve, reject) => {
-        this.http.delete(this.url).subscribe((responseBody) => { 
+        this.http.delete(this.url + this.profile.userId).subscribe((responseBody) => { 
           this.destroy()
           resolve(responseBody)
         });
@@ -46,23 +46,23 @@ export class AuthService {
   }
 
   get(): Observable<boolean> {
-    return this.user.isAuth.asObservable();
+    return this.profile.isAuth.asObservable();
   }
 
   getToken() {
-    return this.user.token;
+    return this.profile.token;
   }
 
   set(newValue): void {
-    this.user.token = newValue.token
-    this.user.userId = newValue.userId
-    this.user.isAuth.next(true)
+    this.profile.token = newValue.token
+    this.profile.userId = newValue.userId
+    this.profile.isAuth.next(true)
   }
 
   destroy(): void {
-    this.user.token = ''
-    this.user.userId = ''
-    this.user.isAuth.next(false)
+    this.profile.token = ''
+    this.profile.userId = ''
+    this.profile.isAuth.next(false)
   }
 }
 
