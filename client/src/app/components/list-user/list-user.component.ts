@@ -34,13 +34,4 @@ export class ListUserComponent implements OnInit {
         this.dataSource = responseBody;
     });
   }
-
 }
-
-export interface User{
-  lastname: string;
-  firstname: number;
-  login: number;
-  password: string;
-}
-

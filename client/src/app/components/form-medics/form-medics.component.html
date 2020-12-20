@@ -1,14 +1,6 @@
 <mat-card>
-    <form (ngSubmit)="onSubmit($event)">
+    <form>
         <table>
-            <tr>
-                <td>
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button value="1">M</mat-radio-button>
-                        <mat-radio-button value="2">Mme</mat-radio-button>
-                    </mat-radio-group>
-                </td>
-            </tr>
             <tr>
                 <td>
                     <mat-form-field appearance="fill">
@@ -26,26 +18,21 @@
             <tr>
                 <td>
                     <mat-form-field appearance="fill">
-                        <mat-label>login</mat-label>
+                        <mat-label>Titre</mat-label>
                         <input matInput name="login">
                     </mat-form-field>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <mat-form-field appearance="fill">
-                        <mat-label>Enter your password</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'" name="password">
-                        <button type=button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
+                        <mat-label>Spécialités</mat-label>
+                        <input matInput>
                     </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
                     <mat-form-field appearance="fill">
-                        <mat-label>qualification</mat-label>
+                        <mat-label>numero finess</mat-label>
                         <input matInput>
                     </mat-form-field>
                 </td>
@@ -90,22 +77,6 @@
                 <td>
                     <mat-form-field appearance="fill">
                         <mat-label>Email</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Groupes</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <mat-form-field appearance="fill">
-                        <mat-label>message</mat-label>
                         <input matInput>
                     </mat-form-field>
                 </td>
