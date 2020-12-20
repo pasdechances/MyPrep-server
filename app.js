@@ -24,6 +24,8 @@ const patientRoutes = require('./routes/patient');
 const prescriberRoutes = require('./routes/prescriber');
 const authRoutes = require('./routes/auth');
 const installRoutes = require('./routes/install');
+const laboratoryRoutes = require('./routes/laboratory');
+const historyRoutes = require('./routes/history');
 
 app.use(bodyParser.json());
 app.use('/api/user', userRoutes);
@@ -34,5 +36,7 @@ app.use('/api/patient', patientRoutes);
 app.use('/api/prescriber', prescriberRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/install', installRoutes);
+app.use('/api/laboratory', laboratoryRoutes);
+app.use('/api/history', historyRoutes);
 
 module.exports = app;

@@ -14,7 +14,8 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { InstallComponent } from './install/install.component';
 import { SearchComponent } from './search/search.component';
-import { SidenavService } from './services/sidenav.service'
+import { SidenavService } from './services/sidenav.service';
+import { FormLaboComponent } from './components/form-labo/form-labo.component'
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SidenavService } from './services/sidenav.service'
     NotFoundComponent,
     InstallComponent,
     SearchComponent,
+    FormLaboComponent,
   ],
   imports: [
     BrowserModule,

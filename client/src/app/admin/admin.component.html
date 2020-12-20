@@ -1,10 +1,13 @@
 <div>
     <mat-tab-group mat-align-tabs="center">
-        <mat-tab label="First">
+        <mat-tab label="Produit">
             <app-form-user (eventUser)="pass()"></app-form-user>
         </mat-tab>
-        <mat-tab label="Second">
+        <mat-tab label="Médecin">
             <app-list-user [eventsUser]="eventsUser.asObservable()"></app-list-user>
+        </mat-tab>
+        <mat-tab label="Labo">
+            <app-form-labo></app-form-labo>
         </mat-tab>
     </mat-tab-group>
 </div>
