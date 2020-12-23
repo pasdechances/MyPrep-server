@@ -41,7 +41,6 @@ import { FormLaboComponent } from './components/form-labo/form-labo.component'
     NotFoundComponent,
     InstallComponent,
     SearchComponent,
-<<<<<<< HEAD
     ListGroupsComponent,
     ListPatientsComponent,
     ListProductsComponent,
@@ -53,9 +52,7 @@ import { FormLaboComponent } from './components/form-labo/form-labo.component'
     DatepickerYearfirstComponent,
     DatepickerMonthyearComponent,
     DatepickerClassicComponent,
-=======
     FormLaboComponent,
->>>>>>> henri
   ],
   imports: [
     BrowserModule,
